@@ -1,10 +1,9 @@
 'use strict';
 
-console.log('App.js is running');
-
 var app = {
     title: 'Indecision App',
-    subTitle: 'Put your life in the hands of a computer'
+    subTitle: 'Put your life in the hands of a computer',
+    options: ['One', 'Two']
 };
 var template = React.createElement(
     'div',
@@ -14,10 +13,15 @@ var template = React.createElement(
         null,
         app.title
     ),
-    React.createElement(
+    app.title && React.createElement(
         'p',
         null,
         app.subTitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        app.options.length > 0 ? 'Here are your options' : 'No options'
     ),
     React.createElement(
         'ol',
@@ -38,7 +42,31 @@ var template = React.createElement(
 var user = {
     name: 'D\'artagnan',
     age: 35,
-    location: 'New York'
+    location: 'Newport'
+};
+
+var getLocation = function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
+};
+
+var count = 0;
+var addOne = function addOne() {
+    console.log('addOne');
+};
+
+var minusOne = function minusOne() {
+    console.log('minusOne');
+};
+
+var reset = function reset() {
+    console.log('reset');
 };
 
 var newTemplate = React.createElement(
@@ -47,22 +75,26 @@ var newTemplate = React.createElement(
     React.createElement(
         'h1',
         null,
-        user.name
+        'Count: ',
+        count
     ),
     React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
+        'button',
+        { onClick: addOne },
+        '+1'
     ),
     React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.location
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'Reset'
     )
 );
 
 var root = document.getElementById('app');
 
-ReactDOM.render(template, root);
+ReactDOM.render(newTemplate, root);
