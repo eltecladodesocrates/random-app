@@ -1,11 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-const jsx = (
-    <div>
-        <h1>Testing</h1>
-    </div>
-)
+import IndecisionApp from './components/IndecisionApp'
 
-ReactDOM.render(jsx, document.getElementById('app'))
-
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'))
